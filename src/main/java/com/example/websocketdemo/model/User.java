@@ -16,23 +16,30 @@ public class User {
     @Id
     @Column(unique = true, nullable = false)
     private String username;
+
     @Column(nullable = false)
     private String password;
+
     @Column(nullable = true)
     private String firstname;
+
     @Column(nullable = true)
     private String lastname;
+
     @Column(nullable = true)
     private String email;
+
     @Column(nullable = false)
     @Enumerated(STRING)
     private Role role;
+
     @Column(nullable = false)
     private Boolean enabled = false;
+
     @Column(nullable = false)
     private Date dateCreate = new Date();
 
-    public User(){};
+    public User(){}
     public User(String username, String password, String email, Role role, String firstname, String lastname, boolean enabled) {
         this.username = username;
         this.password = password;
