@@ -27,7 +27,7 @@ class Bootstrap implements ApplicationListener<ApplicationReadyEvent>{
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
         log.info("Verifying if default user exist");
-        createUserWithRole("josdem", "12345678", "joseluis.delacruz@gmail.com", Role.USER);
+        createUserWithRole("uzair", "uzair", "uzairahmed11d@gmail.com", Role.USER);
     }
 
     private void createUserWithRole(String username, String password, String email, Role authority){
@@ -37,7 +37,7 @@ class Bootstrap implements ApplicationListener<ApplicationReadyEvent>{
             log.info("" + (list.get(i).getUsername()));
         }
         if(userRepository.findByUsername(username) == null){
-            log.info("Vdefault user doesnt exist");
+            log.info("Default user doesnt exist");
             User user = new User(
                     username,
                     new BCryptPasswordEncoder().encode(password),
@@ -47,7 +47,7 @@ class Bootstrap implements ApplicationListener<ApplicationReadyEvent>{
                     username,
                     true
       );
-            userRepository.saveAndFlush(user);
+            userRepository.save(user);
         }
     }
 
